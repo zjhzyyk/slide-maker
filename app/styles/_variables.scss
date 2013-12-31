@@ -1,0 +1,34 @@
+$grid-gutter-width: 30px !default;
+$container-width: ((720px + $grid-gutter-width)) !default;
+
+$slide-width: 800px !default;
+$slide-height: $slide-width/4*3 !default;
+
+$slide-preview-width: 140px !default;
+$slide-preview-height: $slide-preview-width/4*3 !default;
+
+$scale: $slide-preview-width/$slide-width !default;
+
+$h1-size: 2em !default;
+$text-size: 1em !default;
+
+$slide-h1-size: $h1-size*$scale !default;
+$slide-text-size: $text-size*$scale !default;
+
+$slide-top-padding: 40px !default;
+$slide-top-preview-padding: $slide-top-padding*$scale !default;
+
+$slide-left-padding: 60px !default;
+$slide-left-preview-padding: $slide-left-padding*$scale !default;
+
+$slide-radius: 10px !default;
+$slide-preview-radius: $slide-radius*$scale !default;
+
+$slide-border-width: 1px !default;
+$slide-border-preview-width: $slide-border-width*$scale !default;
+
+$slide-margin: 50px !default;
+$slide-preview-margin: $slide-margin*$scale !default;
+
+// $h1-outline-size: $h1-size/$scale !default;
+// $text-outline-size: $text-size/$scale !default;
