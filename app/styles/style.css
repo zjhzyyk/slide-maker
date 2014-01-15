@@ -1,25 +1,123 @@
-/* line 7, style.scss */
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 750px;
-  display: table;
-}
-/* line 3, _mixins.scss */
-.container:before, .container:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-/* line 7, _mixins.scss */
-.container:after {
-  clear: both;
+/* line 14, style.scss */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* line 13, style.scss */
+/* line 1, _background.scss */
+.theme-color-asphalt-orange {
+  background-color: #2c3e50;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #415b77), color-stop(100%, #2c3e50));
+  background: -webkit-radial-gradient(circle, #415b77, #2c3e50);
+  background: -moz-radial-gradient(circle, #415b77, #2c3e50);
+  background: -o-radial-gradient(circle, #415b77, #2c3e50);
+  background: radial-gradient(circle, #415b77, #2c3e50);
+}
+
+/* line 5, _background.scss */
+.theme-color-cobalt-orange {
+  background-color: #13335a;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #1a4984), color-stop(100%, #13335a));
+  background: -webkit-radial-gradient(circle, #1a4984, #13335a);
+  background: -moz-radial-gradient(circle, #1a4984, #13335a);
+  background: -o-radial-gradient(circle, #1a4984, #13335a);
+  background: radial-gradient(circle, #1a4984, #13335a);
+}
+
+/* line 9, _background.scss */
+.theme-color-beige-brown {
+  background-color: #f7f3de;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #ffffff), color-stop(100%, #f7f2d3));
+  background: -webkit-radial-gradient(circle, #ffffff, #f7f2d3);
+  background: -moz-radial-gradient(circle, #ffffff, #f7f2d3);
+  background: -o-radial-gradient(circle, #ffffff, #f7f2d3);
+  background: radial-gradient(circle, #ffffff, #f7f2d3);
+}
+
+/* line 13, _background.scss */
+.theme-color-coral-blue {
+  background-color: #c97150;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #d59177), color-stop(100%, #c97150));
+  background: -webkit-radial-gradient(circle, #d59177, #c97150);
+  background: -moz-radial-gradient(circle, #d59177, #c97150);
+  background: -o-radial-gradient(circle, #d59177, #c97150);
+  background: radial-gradient(circle, #d59177, #c97150);
+}
+
+/* line 17, _background.scss */
+.theme-color-forest-yellow {
+  background-color: #14853d;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #189d49), color-stop(100%, #14853d));
+  background: -webkit-radial-gradient(circle, #189d49, #14853d);
+  background: -moz-radial-gradient(circle, #189d49, #14853d);
+  background: -o-radial-gradient(circle, #189d49, #14853d);
+  background: radial-gradient(circle, #189d49, #14853d);
+}
+
+/* line 21, _background.scss */
+.theme-color-grey-blue {
+  background-color: #2b2b2b;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
+  background: -webkit-radial-gradient(circle, #555a5f, #1c1e20);
+  background: -moz-radial-gradient(circle, #555a5f, #1c1e20);
+  background: -o-radial-gradient(circle, #555a5f, #1c1e20);
+  background: radial-gradient(circle, #555a5f, #1c1e20);
+}
+
+/* line 25, _background.scss */
+.theme-color-lila-yellow {
+  background-color: #512b42;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #793f62), color-stop(100%, #512b42));
+  background: -webkit-radial-gradient(circle, #793f62, #512b42);
+  background: -moz-radial-gradient(circle, #793f62, #512b42);
+  background: -o-radial-gradient(circle, #793f62, #512b42);
+  background: radial-gradient(circle, #793f62, #512b42);
+}
+
+/* line 29, _background.scss */
+.theme-color-mint-beige {
+  background-color: #207c5f;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #2aa57e), color-stop(100%, #207c5f));
+  background: -webkit-radial-gradient(circle, #2aa57e, #207c5f);
+  background: -moz-radial-gradient(circle, #2aa57e, #207c5f);
+  background: -o-radial-gradient(circle, #2aa57e, #207c5f);
+  background: radial-gradient(circle, #2aa57e, #207c5f);
+}
+
+/* line 33, _background.scss */
+.theme-color-sea-yellow {
+  background-color: #297477;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #6cc9cd), color-stop(100%, #297477));
+  background: -webkit-radial-gradient(circle, #6cc9cd, #297477);
+  background: -moz-radial-gradient(circle, #6cc9cd, #297477);
+  background: -o-radial-gradient(circle, #6cc9cd, #297477);
+  background: radial-gradient(circle, #6cc9cd, #297477);
+}
+
+/* line 37, _background.scss */
+.theme-color-silver-blue {
+  background-color: #fff;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #ffffff), color-stop(100%, #bbbbbb));
+  background: -webkit-radial-gradient(circle, #ffffff, #bbbbbb);
+  background: -moz-radial-gradient(circle, #ffffff, #bbbbbb);
+  background: -o-radial-gradient(circle, #ffffff, #bbbbbb);
+  background: radial-gradient(circle, #ffffff, #bbbbbb);
+}
+
+/* line 42, _background.scss */
+.theme-color-sky-blue {
+  background-color: #f7fbfc;
+  background: -webkit-gradient(radial, circle, 0, circle, 100, color-stop(0%, #f7fbfc), color-stop(100%, #add9e4));
+  background: -webkit-radial-gradient(circle, #f7fbfc, #add9e4);
+  background: -moz-radial-gradient(circle, #f7fbfc, #add9e4);
+  background: -o-radial-gradient(circle, #f7fbfc, #add9e4);
+  background: radial-gradient(circle, #f7fbfc, #add9e4);
+}
+
+/* line 1, _slide.scss */
 .slide {
   width: 140px;
   height: 105px;
@@ -27,6 +125,7 @@
   border: 0.175px solid rgba(0, 0, 0, 0.3);
   padding: 7px 10.5px;
   margin: 8.75px;
+  position: relative;
   -webkit-border-radius: 1.75px;
   -moz-border-radius: 1.75px;
   -ms-border-radius: 1.75px;
@@ -42,156 +141,178 @@
   zoom: 1;
   *display: inline;
 }
+/* line 13, _slide.scss */
+.slide * {
+  font-size: 0.175em;
+}
+/* line 16, _slide.scss */
+.slide h1 {
+  font-size: 0.35em;
+}
+/* line 19, _slide.scss */
+.slide:hover .delete-slide-icon {
+  display: block;
+}
 
-/* line 25, style.scss */
+/* line 28, _slide.scss */
+.zoomed .delete-slide-icon {
+  display: none !important;
+}
+
+/* line 32, _slide.scss */
+.delete-slide-icon {
+  position: absolute;
+  left: -0.45em;
+  top: -0.45em;
+  font-size: 1.25em;
+  display: none;
+}
+
+/* line 24, style.scss */
+.zoomed {
+  overflow: hidden;
+}
+
+/* line 28, style.scss */
+.wrapper {
+  margin: 0 auto;
+  width: 750px;
+  display: table;
+  height: 100%;
+}
+
+/* line 37, style.scss */
 .text {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 35, style.scss */
-.slide * {
-  font-size: 0.175em;
-}
-
-/* line 39, style.scss */
-.slide h1 {
-  font-size: 0.35em;
-}
-
 /* line 43, style.scss */
+#editor {
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  -moz-transition: -moz-transform 0.5s ease-in;
+  -o-transition: -o-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  outline: none;
+}
+
+/* line 52, style.scss */
 body {
   margin: 0;
   background-attachment: fixed !important;
 }
 
-/* line 48, style.scss */
+/* line 58, style.scss */
 html, body, .container {
   height: 100%;
 }
 
-/* line 52, style.scss */
+/* line 62, style.scss */
 * {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* line 56, style.scss */
-.theme-color-asphalt-orange {
-  background: #415b77;
-  background: -moz-radial-gradient(center, circle cover, #415b77 0%, #2c3e50 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #415b77), color-stop(100%, #2c3e50));
-  background: -webkit-radial-gradient(center, circle cover, #415b77 0%, #2c3e50 100%);
-  background: -o-radial-gradient(center, circle cover, #415b77 0%, #2c3e50 100%);
-  background: radial-gradient(center, circle cover, #415b77 0%, #2c3e50 100%);
-  background-color: #2c3e50;
+/* line 66, style.scss */
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* line 65, style.scss */
-.theme-color-cobalt-orange {
-  background: #1a4984;
-  background: -moz-radial-gradient(center, circle cover, #1a4984 0%, #13335a 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1a4984), color-stop(100%, #13335a));
-  background: -webkit-radial-gradient(center, circle cover, #1a4984 0%, #13335a 100%);
-  background: -o-radial-gradient(center, circle cover, #1a4984 0%, #13335a 100%);
-  background: radial-gradient(center, circle cover, #1a4984 0%, #13335a 100%);
-  background-color: #13335a;
+/* line 72, style.scss */
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
-/* line 74, style.scss */
-.theme-color-beige-brown {
-  background: #fff;
-  background: -moz-radial-gradient(center, circle cover, white 0%, #f7f2d3 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, white), color-stop(100%, #f7f2d3));
-  background: -webkit-radial-gradient(center, circle cover, white 0%, #f7f2d3 100%);
-  background: -o-radial-gradient(center, circle cover, white 0%, #f7f2d3 100%);
-  background: radial-gradient(center, circle cover, #ffffff 0%, #f7f2d3 100%);
-  background-color: #f7f3de;
+/* line 77, style.scss */
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
 }
 
-/* line 83, style.scss */
-.theme-color-coral-blue {
-  background: #d59177;
-  background: -moz-radial-gradient(center, circle cover, #d59177 0%, #c97150 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #d59177), color-stop(100%, #c97150));
-  background: -webkit-radial-gradient(center, circle cover, #d59177 0%, #c97150 100%);
-  background: -o-radial-gradient(center, circle cover, #d59177 0%, #c97150 100%);
-  background: radial-gradient(center, circle cover, #d59177 0%, #c97150 100%);
-  background-color: #c97150;
+/* line 81, style.scss */
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
-/* line 92, style.scss */
-.theme-color-forest-yellow {
-  background: #189d49;
-  background: -moz-radial-gradient(center, circle cover, #189d49 0%, #14853d 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #189d49), color-stop(100%, #14853d));
-  background: -webkit-radial-gradient(center, circle cover, #189d49 0%, #14853d 100%);
-  background: -o-radial-gradient(center, circle cover, #189d49 0%, #14853d 100%);
-  background: radial-gradient(center, circle cover, #189d49 0%, #14853d 100%);
-  background-color: #14853d;
+/* line 86, style.scss */
+.btn-group > .btn:first-child {
+  margin-left: 0;
 }
 
-/* line 101, style.scss */
-.theme-color-grey-blue {
-  background: #555a5f;
-  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
-  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background-color: #2b2b2b;
+/* line 90, style.scss */
+.btn-group > .btn, .btn-group-vertical > .btn {
+  position: relative;
+  float: left;
 }
 
-/* line 110, style.scss */
-.theme-color-lila-yellow {
-  background: #793f62;
-  background: -moz-radial-gradient(center, circle cover, #793f62 0%, #512b42 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #793f62), color-stop(100%, #512b42));
-  background: -webkit-radial-gradient(center, circle cover, #793f62 0%, #512b42 100%);
-  background: -o-radial-gradient(center, circle cover, #793f62 0%, #512b42 100%);
-  background: radial-gradient(center, circle cover, #793f62 0%, #512b42 100%);
-  background-color: #512b42;
+/* line 95, style.scss */
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+/* line 115, style.scss */
+.btn:focus {
+  outline: none;
 }
 
-/* line 119, style.scss */
-.theme-color-mint-beige {
-  background: #2aa57e;
-  background: -moz-radial-gradient(center, circle cover, #2aa57e 0%, #207c5f 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #2aa57e), color-stop(100%, #207c5f));
-  background: -webkit-radial-gradient(center, circle cover, #2aa57e 0%, #207c5f 100%);
-  background: -o-radial-gradient(center, circle cover, #2aa57e 0%, #207c5f 100%);
-  background: radial-gradient(center, circle cover, #2aa57e 0%, #207c5f 100%);
-  background-color: #207c5f;
+/* line 120, style.scss */
+.btn-default {
+  color: #333333;
+  background-color: white;
+  border-color: #cccccc;
 }
 
-/* line 128, style.scss */
-.theme-color-sea-yellow {
-  background: #6cc9cd;
-  background: -moz-linear-gradient(top, #6cc9cd 0%, #297477 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6cc9cd), color-stop(100%, #297477));
-  background: -webkit-linear-gradient(top, #6cc9cd 0%, #297477 100%);
-  background: -o-linear-gradient(top, #6cc9cd 0%, #297477 100%);
-  background: linear-gradient(top, #6cc9cd 0%, #297477 100%);
-  background-color: #297477;
+/* line 126, style.scss */
+.btn:active, .btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-/* line 137, style.scss */
-.theme-color-silver-blue {
-  background: #fff;
-  background: -moz-radial-gradient(center, circle cover, white 0%, #bbbbbb 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, white), color-stop(100%, #bbbbbb));
-  background: -webkit-radial-gradient(center, circle cover, white 0%, #bbbbbb 100%);
-  background: -o-radial-gradient(center, circle cover, white 0%, #bbbbbb 100%);
-  background: radial-gradient(center, circle cover, #ffffff 0%, #bbbbbb 100%);
-  background-color: #bbbbbb;
+/* line 133, style.scss */
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
 }
 
-/* line 147, style.scss */
-.theme-color-sky-blue {
-  background: #f7fbfc;
-  background: -moz-radial-gradient(center, circle cover, #f7fbfc 0%, #add9e4 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #f7fbfc), color-stop(100%, #add9e4));
-  background: -webkit-radial-gradient(center, circle cover, #f7fbfc 0%, #add9e4 100%);
-  background: -o-radial-gradient(center, circle cover, #f7fbfc 0%, #add9e4 100%);
-  background: radial-gradient(center, circle cover, #f7fbfc 0%, #add9e4 100%);
-  background-color: #f7fbfc;
+/* line 138, style.scss */
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+  margin-left: -1px;
+}
+
+/* line 142, style.scss */
+.btn-default:hover {
+  color: #333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+/* line 148, style.scss */
+.btn-group > .btn:hover {
+  z-index: 2;
 }

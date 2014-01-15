@@ -1,0 +1,38 @@
+.slide {
+	// overflow: hidden;
+	width: $slide-preview-width;
+	height: $slide-preview-height;
+	background-color: white;
+	border: $slide-border-preview-width solid rgba(0, 0, 0, .3);
+	padding: $slide-top-preview-padding $slide-left-preview-padding;
+	margin: $slide-preview-margin;
+	position: relative;
+	@include border-radius($slide-preview-radius);
+	@include box-shadow(rgba(0, 0, 0, .1) 0 2px 6px);
+	@include inline-block;
+	* {
+		font-size: $slide-text-size;
+	}
+	h1 {
+		font-size: $slide-h1-size;
+	}
+	&:hover .delete-slide-icon {
+		display: block;
+	}
+}
+
+.slide:focus {
+	// overflow: visible;
+}
+
+.zoomed .delete-slide-icon {
+	display: none !important;
+}
+
+.delete-slide-icon {
+	position: absolute;
+	left: -0.45em;
+	top: -0.45em;
+	font-size: 1.25em;
+	display: none;
+}

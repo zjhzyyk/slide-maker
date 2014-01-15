@@ -1,0 +1,46 @@
+.theme-color-asphalt-orange{
+	background-color:#2c3e50;
+	@include background(radial-gradient(circle, #415b77, #2c3e50));
+}
+.theme-color-cobalt-orange{
+	background-color:#13335a;
+	@include background(radial-gradient(circle, #1a4984, #13335a));
+}
+.theme-color-beige-brown{
+	background-color:#f7f3de;
+	@include background(radial-gradient(circle, #fff, #f7f2d3));
+}
+.theme-color-coral-blue{
+	background-color:#c97150;
+	@include background(radial-gradient(circle, #d59177, #c97150));
+}
+.theme-color-forest-yellow{
+	background-color:#14853d;
+	@include background(radial-gradient(circle, #189d49, #14853d));
+}
+.theme-color-grey-blue{
+	background-color:#2b2b2b;
+	@include background(radial-gradient(circle, #555a5f, #1c1e20));
+}
+.theme-color-lila-yellow{
+	background-color:#512b42;
+	@include background(radial-gradient(circle, #793f62, #512b42));
+}
+.theme-color-mint-beige{
+	background-color:#207c5f;
+	@include background(radial-gradient(circle, #2aa57e, #207c5f));
+}
+.theme-color-sea-yellow{
+	background-color:#297477;
+	@include background(radial-gradient(circle, #6cc9cd, #297477));
+}
+.theme-color-silver-blue{
+	background-color: #fff;
+	@include background(radial-gradient(circle, #fff, #bbb));
+}
+
+.theme-color-sky-blue{
+	background-color: #f7fbfc;
+	@include background(radial-gradient(circle, #f7fbfc, #add9e4));
+}
+

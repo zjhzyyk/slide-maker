@@ -1,171 +1,105 @@
-window.prezi = (function(document, window, undefined){
+window.impressplus = (function(document, window, undefined){
   var slides = [];
   var present;
-  var translate="";
   var slidesNum;
   var canvas;
-  var cur;
-  var ratio=1.2;
-  var option = {
-    sidebar: true,
-    mousewheel: true,
-    slideClick: true
-  };
-  function next(){
-    if (cur+1<slidesNum) {
-      moveto(cur+1);
-      cur++;
+  var body;
+  var inZooming = false;
+  var ptx, pty;
+  var eps = 1e-5;
+  function zoomToRec(x,y,w,h) {
+    if (inZooming) {
+      console.log("exit because other zooming takes place")
+      return;
     }
-  }
-  function prev(){
-    if(cur-1>=0) {
-      moveto(cur-1);
-      cur--;
+    var wr = 0.85;
+    var hr = 0.85;
+    w = w * canvas.scale;
+    h = h * canvas.scale;
+    var r1 = canvas.width * wr / w;
+    var r2 = canvas.height * hr / h;
+    console.log("r1")
+    var r = Math.min(r1,r2);
+    var canvasOffset = $(present).offset();
+    x = (x - canvasOffset.left)/canvas.scale;
+    y = (y - canvasOffset.top)/canvas.scale;
+    canvas.scale *= r;
+    if (canvas.scale!=1)
+      body.addClass("zoomed");
+    else
+      body.removeClass("zoomed");
+    console.log("x", x, "y", y, "w", w, "h", h);
+    console.log("canvas.x", canvas.x, "canvas.y", canvas.y);
+    console.log("scale",canvas.scale);
+    var sx = (canvas.width-r*w)/2;
+    var sy = (canvas.height-r*h)/2;
+    console.log("sx",sx,"sy", sy);
+    var cx = sx-x*canvas.scale;
+    var cy = sy-y*canvas.scale;
+    console.log("cx",cx,"cy", cy);
+    var tx = cx - canvas.x;
+    var ty = cy - canvas.y;
+    console.log("tx",tx,"ty", ty);
+    tx = tx/canvas.scale;
+    ty = ty/canvas.scale;
+    console.log("tx",tx,"ty", ty);
+    if (Math.abs(tx-ptx)<eps && Math.abs(ty-pty)<eps && Math.abs(r-1)<eps) {
+      console.log("exit because change is slight");
+      return;
     }
+    inZooming = true;
+    var translate = "translate("+tx.toFixed(10)+"px,"+ty.toFixed(10)+"px)";
+    var transform = "scale(" + canvas.scale + ") "+ translate;
+    console.log(transform);
+    setTransform(transform);
+    ptx = tx;
+    pty = ty;
   }
   function moveto(i){
     if (i<0 || i>=slidesNum) return;
-    // console.log("in moveto "+i);
-    zoomToRec(slides[i].x, slides[i].y, slides[i].width, slides[i].height);
+    console.log("in moveto "+i);
+    var position = slides[i].offset();
+    zoomToRec(position.left, position.top, parseFloat(slides[i].css("width")), parseFloat(slides[i].css("height")));
   }
-  function zoomin(event, change) {
-    //first unbind all zoom events
-    if (change===undefined || change===true || change===null) canvas.scale *= ratio;
-    var transform = "scale(" + canvas.scale + ") "+ translate;
+  function setTransform(transform){
     present.style.webkitTransform = transform;
     present.style.MozTransform = transform;
     present.style.msTransform = transform;
     present.style.oTransform = transform;
     present.style.transform = transform;
-    //after zooming finishes, bind back all zoom events
-  }
-  function zoomToRec(x,y,w,h) {
-    var wr = 0.85;
-    var hr = 0.85;
-    var r1 = canvas.width * wr / w / canvas.scale;
-    var r2 = canvas.height * hr / h / canvas.scale;
-    var r = Math.min(r1,r2);
-    canvas.scale *= r;
-    var ffx = canvas.ox+(canvas.width-canvas.scale*w)/2;
-    var ffy = canvas.oy+(canvas.height-canvas.scale*h)/2;
-    ffx -= x * canvas.scale;
-    ffy -= y * canvas.scale;
-    var tx = (ffx-canvas.ox)/canvas.scale;
-    var ty = (ffy-canvas.oy)/canvas.scale;
-    translate = "translate("+tx.toFixed(10)+"px,"+ty.toFixed(10)+"px)";
-    zoomin(null, false);
-  }
-  function zoomToPoint(d,cx,cy) {
-    var cfx = present.getBoundingClientRect().left;
-    var cfy = present.getBoundingClientRect().top;
-    var ffx, ffy;
-    if (d>0) {
-      canvas.scale *= ratio;
-      ffx = ratio*(cfx-cx)+cx;
-      ffy = ratio*(cfy-cy)+cy;
-    }
-    else {
-      canvas.scale /= ratio;
-      ffx = (cfx-cx)/ratio+cx;
-      ffy = (cfy-cy)/ratio+cy;
-    }
-    var tx = (ffx-canvas.ox)/canvas.scale;
-    var ty = (ffy-canvas.oy)/canvas.scale;
-    translate = "translate("+tx.toFixed(10)+"px,"+ty.toFixed(10)+"px)";
-    zoomin(null, false);
   }
   return {
     init: function(opt){
-      present = document.getElementById("presentation");
-      var slidesElements = document.getElementsByClassName("pslide");
-      slidesNum = slidesElements.length;
-      var i = 0;
-      var Slide = function(x,y,w,h){
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-      };
-      cur = 0;
+      present = document.getElementById('editor');
+      present.spellcheck = false;
+      body = $("body");
+      var editorOffset = $(present).offset();
+      $(present).bind("transitionend", function(){
+        console.log("transtion ends.");
+        inZooming = false;
+      });
       canvas = {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        scale: 1,
-        ox: present.getBoundingClientRect().left,
-        oy: present.getBoundingClientRect().top
+        width: $(window).width(),
+        height: $(window).height(),
+        scale: 1.0,
+        x: editorOffset.left,
+        y: editorOffset.top
       };
-      for (var prop in opt) {
-        if (opt.hasOwnProperty(prop)) {
-          option[prop] = opt[prop];
-        }
-      }
-      for (;i<slidesNum; i++) {
-        slides.push(new Slide(
-          parseFloat(slidesElements[i].style.left),
-          parseFloat(slidesElements[i].style.top),
-          parseFloat(slidesElements[i].style.width),
-          parseFloat(slidesElements[i].style.height)
-          )
-        );
-        if (option.slideClick===true) {
-          (function(){
-            var si = i;
-            slidesElements[si].onclick = function(e) {
-              e.stopPropagation();
-              moveto(si);
-            };  
-          })();
-        }
-      }
-      document.onkeydown = function(e) {
-        if (e.keyCode == 39 ||
-            e.keyCode == 13) {
-          next();
-        } else if (e.keyCode == 37) {
-          prev();
-        }
-      };
-      document.onclick = function(e) {
-        next();
-      }
-      if (option.mousewheel===true) {
-        document.onmousewheel = function(e){
-          zoomToPoint(event.wheelDelta, event.clientX, event.clientY);
-        };
-      }
-      if (option.sidebar===true) {
-        document.getElementById("zoomin").onclick = function(e) {
-          e.stopPropagation();
-          zoomToPoint(1, canvas.ox+canvas.width/2, canvas.oy+canvas.height/2);
-        };
-        document.getElementById("zoomout").onclick = function(e) {
-          e.stopPropagation();
-          zoomToPoint(-1, canvas.ox+canvas.width/2, canvas.oy+canvas.height/2);
-        };
-        document.getElementById("gohome").onclick = function(e) {
-          e.stopPropagation();
-          if (slidesNum<1) return;
-          var minx = slides[0].x, 
-              miny = slides[0].y, 
-              maxx = minx + slides[0].width, 
-              maxy = miny + slides[0].height, 
-              width, height;
-          for (var it = 1; it<slidesNum; it++) {
-            if (minx > slides[it].x)
-              minx = slides[it].x;
-            if (miny > slides[it].y)
-              miny = slides[it].y;
-            if (maxx < slides[it].x+slides[it].width)
-              maxx = slides[it].x+slides[it].width;
-            if (maxy < slides[it].y+slides[it].height)
-              maxy = slides[it].y+slides[it].height;
-          }
-          width = maxx - minx;
-          height = maxy - miny;
-          zoomToRec(minx, miny, width, height);
-        }
-      }
-      moveto(0);
+      console.log(canvas.width);
+      console.log(canvas.height);
+      $(".slide").each(function(item){
+        slides.push(item);
+      });
+      slidesNum = slides.length;
+      $("body").on("click", ".slide", function(){
+        console.log("get clicked");
+        var position = $(this).offset();
+        zoomToRec(position.left, position.top, parseFloat($(this).css("width")), parseFloat($(this).css("height")));
+      });
+    },
+    go: moveto,
+    home: function(){
+      setTransform("");
     }
   };
 })(document, window);
