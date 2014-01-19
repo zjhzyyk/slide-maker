@@ -1,151 +1,67 @@
-// @import "bootstrap-sass/lib/variables";
-@import "bootstrap-sass/lib/mixins";
-// @import "bootstrap-sass/lib/normalize";
-// @import "bootstrap-sass/lib/print";
-// @import "bootstrap-sass/lib/buttons";
-// @import "bootstrap-sass/lib/button-groups";
-
-
-// @import "bootstrap-sass/lib/navbar";
-// Core variables and mixins
+@import "variables";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "typography";
+@import "background";
+@import "slide";
+@import "button";
+// @import "scrollbar";
+// @import "mixins";
 
 *,
 *:before,
 *:after {
-  @include box-sizing(border-box);
+	@include box-sizing(border-box);
 }
-
-@import "variables";
-@import "compass/css3";
-@import "background";
-@import "slide";
-// @import "mixins";
 
 .zoomed {
 	overflow: hidden;
 }
 
 .wrapper {
-	// @include container-fixed();
-	// @include clearfix();
+	width: 750px;
 	margin: 0 auto;
-	width: $wrapper-width;
-	display: table; 
-	height: 100%;
-}
-
-.text {
-	display: table-cell; 
-	vertical-align:middle;
-	// @include scale($scale);
 }
 
 #editor {
 	@include transform-origin(0,0);
-	// @include transition-property(transform);
-	// @include transition-duration(1s);
-	// @include transition-timing-function(ease-in);
 	@include transition(transform 0.5s ease-in);
+	@include transform-style(preserve-3d);
 	outline: none;
+	// @include pie-clearfix;
+	width: $wrapper-width;
+	// margin: 0 auto;
+}
+
+#editor.no-transition {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+#editor.initial {
+	-webkit-transform: scale($scale) !important;
+	-moz-transform: scale($scale) !important;
+	-ms-transform: scale($scale) !important;
+	-o-transform: scale($scale) !important;
+	transform: scale($scale) !important;
 }
 
 body {
 	margin: 0;
 	// padding-top: 50px;
 	background-attachment: fixed !important;
+	position: fixed;
+	width: 100%;
 }
 
 html, body, .container {
 	height: 100%;
 }
 
-* {
-	font-family: 'Open Sans', sans-serif;
+.toolbar {
+	position: fixed;
+	top: 0;
+	z-index:1000;
 }
-
-.btn-group{
-position: relative;
-display: inline-block;
-vertical-align: middle;
-}
-
-.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
-border-bottom-right-radius: 0;
-border-top-right-radius: 0;
-}
-
-.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-border-radius: 0;
-}
-
-.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
-border-bottom-left-radius: 0;
-border-top-left-radius: 0;
-}
-
-.btn-group > .btn:first-child {
-margin-left: 0;
-}
-
-.btn-group > .btn, .btn-group-vertical > .btn {
-position: relative;
-float: left;
-}
-
-.btn {
-	display: inline-block;
-	margin-bottom: 0;
-	margin-right: 0;
-	font-weight: normal;
-	text-align: center;
-	vertical-align: middle;
-	cursor: pointer;
-	background-image: none;
-	border: 1px solid transparent;
-	white-space: nowrap;
-	padding: 6px 12px;
-	font-size: 14px;
-	line-height: 1.42857;
-	border-radius: 4px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-	&:focus {
-		outline: none;
-	}
-}
-
-.btn-default {
-color: #333333;
-background-color: white;
-border-color: #cccccc;
-}
-
-.btn:active, .btn.active {
-background-image: none;
-outline: 0;
--webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-}
-
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
--webkit-appearance: button;
-cursor: pointer;
-}
-
-.btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group {
-margin-left: -1px;
-}
-
-.btn-default:hover {
-color: #333;
-background-color: #ebebeb;
-border-color: #adadad;
-}
-
-.btn-group>.btn:hover {
-z-index: 2;
-}
-

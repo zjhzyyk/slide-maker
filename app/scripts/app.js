@@ -29,7 +29,21 @@ $(function(){
 			node = node.nextSibling;
 		$(node).after(blankSlide);
 	});
+	$("#reset").click(function(){
+		impressplus.reset();
+	});
 	$("#editor").on("click", ".delete-slide-icon", function(){
 		$(this).parent().remove();
+	});
+	
+	$("#present").click(function(){
+		var present = window.open("presentation.html");
+		present.onload = function(){
+			(present.document.getElementsByTagName("body")[0]).innerHTML = $('.wrapper')[0].innerHTML + 
+			"<script type='text/javascript'>impressplus.init();</script>" + 
+			"<script type='text/javascript'>impressplus.resetInPresent();</script>";
+			present.impressplus.init();
+			present.impressplus.resetInPresent();
+		};
 	});
 });

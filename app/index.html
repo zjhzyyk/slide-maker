@@ -7,23 +7,29 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
 	<!-- <link rel="stylesheet" href="styles/bootstrap.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="bower_components/perfect-scrollbar/min/perfect-scrollbar-0.4.6.min.css"> -->
 	<link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="theme-color-silver-blue">
 	<!-- <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
 	</div> -->
-	<div class="btn-group">
+	<div class="btn-group toolbar">
 		<button type="button" class="btn btn-default" id="bold">bold</button>
 		<button type="button" class="btn btn-default">italic</button>
 		<button type="button" class="btn btn-default">underscore</button>
 		<button type="button" class="btn btn-default" id="insert-slide">insert slide</button>
+		<button type="button" class="btn btn-default" id="present">present</button>
 		<button type="button" class="btn btn-default" id="reset">reset</button>
 	</div>
 	<div class="wrapper">
-		<div class="text" id="editor">
+		<div class="text initial" id="editor">
 		</div>
 	</div>
+<!-- 	<div class="ps-scrollbar-y-rail" id="scrollbar">
+		<div class="ps-scrollbar-y"></div>
+	</div> -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
 	<script src="http://yui.yahooapis.com/3.14.1/build/yui/yui-min.js"></script>
 	<script src="scripts/impressplus.js"></script>
 	<script src="scripts/app.js"></script>

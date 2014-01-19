@@ -1,5 +1,3 @@
-$wrapper-width: 750px !default;
-
 $slide-width: 800px !default;
 $slide-height: $slide-width/4*3 !default;
 
@@ -8,11 +6,13 @@ $slide-preview-height: $slide-preview-width/4*3 !default;
 
 $scale: $slide-preview-width/$slide-width !default;
 
-$h1-size: 2em !default;
-$text-size: 1em !default;
+$slide-h1-size: 2em !default;
+$slide-text-size: 1em !default;
 
-$slide-h1-size: $h1-size*$scale !default;
-$slide-text-size: $text-size*$scale !default;
+$h1-size: $slide-h1-size/$scale !default;
+$text-size: $slide-text-size/$scale !default;
+
+$wrapper-width: 750px/$scale !default;
 
 $slide-top-padding: 40px !default;
 $slide-top-preview-padding: $slide-top-padding*$scale !default;

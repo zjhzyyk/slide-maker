@@ -1,10 +1,16 @@
-/* line 14, style.scss */
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+/* line 1, _typography.scss */
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 5, _typography.scss */
+p {
+  font-size: 5.71429em;
+}
+
+/* line 9, _typography.scss */
+h1 {
+  font-size: 11.42857em;
 }
 
 /* line 1, _background.scss */
@@ -119,18 +125,18 @@
 
 /* line 1, _slide.scss */
 .slide {
-  width: 140px;
-  height: 105px;
+  width: 800px;
+  height: 600px;
   background-color: white;
-  border: 0.175px solid rgba(0, 0, 0, 0.3);
-  padding: 7px 10.5px;
-  margin: 8.75px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 40px 60px;
+  margin: 50px;
   position: relative;
-  -webkit-border-radius: 1.75px;
-  -moz-border-radius: 1.75px;
-  -ms-border-radius: 1.75px;
-  -o-border-radius: 1.75px;
-  border-radius: 1.75px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px;
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px;
@@ -143,11 +149,11 @@
 }
 /* line 13, _slide.scss */
 .slide * {
-  font-size: 0.175em;
+  font-size: 1em;
 }
 /* line 16, _slide.scss */
 .slide h1 {
-  font-size: 0.35em;
+  font-size: 2em;
 }
 /* line 19, _slide.scss */
 .slide:hover .delete-slide-icon {
@@ -164,95 +170,46 @@
   position: absolute;
   left: -0.45em;
   top: -0.45em;
-  font-size: 1.25em;
+  font-size: 7.14286em;
   display: none;
 }
 
-/* line 24, style.scss */
-.zoomed {
-  overflow: hidden;
-}
-
-/* line 28, style.scss */
-.wrapper {
-  margin: 0 auto;
-  width: 750px;
-  display: table;
-  height: 100%;
-}
-
-/* line 37, style.scss */
-.text {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-/* line 43, style.scss */
-#editor {
-  -webkit-transform-origin: 0 0;
-  -moz-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  -o-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transition: -webkit-transform 0.5s ease-in;
-  -moz-transition: -moz-transform 0.5s ease-in;
-  -o-transition: -o-transform 0.5s ease-in;
-  transition: transform 0.5s ease-in;
-  outline: none;
-}
-
-/* line 52, style.scss */
-body {
-  margin: 0;
-  background-attachment: fixed !important;
-}
-
-/* line 58, style.scss */
-html, body, .container {
-  height: 100%;
-}
-
-/* line 62, style.scss */
-* {
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* line 66, style.scss */
+/* line 1, _button.scss */
 .btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 72, style.scss */
+/* line 7, _button.scss */
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
-/* line 77, style.scss */
+/* line 12, _button.scss */
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
 
-/* line 81, style.scss */
+/* line 16, _button.scss */
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 
-/* line 86, style.scss */
+/* line 21, _button.scss */
 .btn-group > .btn:first-child {
   margin-left: 0;
 }
 
-/* line 90, style.scss */
+/* line 25, _button.scss */
 .btn-group > .btn, .btn-group-vertical > .btn {
   position: relative;
   float: left;
 }
 
-/* line 95, style.scss */
+/* line 30, _button.scss */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -274,19 +231,19 @@ html, body, .container {
   -o-user-select: none;
   user-select: none;
 }
-/* line 115, style.scss */
+/* line 50, _button.scss */
 .btn:focus {
   outline: none;
 }
 
-/* line 120, style.scss */
+/* line 55, _button.scss */
 .btn-default {
   color: #333333;
   background-color: white;
   border-color: #cccccc;
 }
 
-/* line 126, style.scss */
+/* line 61, _button.scss */
 .btn:active, .btn.active {
   background-image: none;
   outline: 0;
@@ -294,25 +251,102 @@ html, body, .container {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-/* line 133, style.scss */
+/* line 68, _button.scss */
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-/* line 138, style.scss */
+/* line 73, _button.scss */
 .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
 
-/* line 142, style.scss */
+/* line 77, _button.scss */
 .btn-default:hover {
   color: #333;
   background-color: #ebebeb;
   border-color: #adadad;
 }
 
-/* line 148, style.scss */
+/* line 83, _button.scss */
 .btn-group > .btn:hover {
   z-index: 2;
+}
+
+/* line 13, style.scss */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 17, style.scss */
+.zoomed {
+  overflow: hidden;
+}
+
+/* line 21, style.scss */
+.wrapper {
+  width: 750px;
+  margin: 0 auto;
+}
+
+/* line 26, style.scss */
+#editor {
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  -moz-transition: -moz-transform 0.5s ease-in;
+  -o-transition: -o-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  outline: none;
+  width: 4285.71429px;
+}
+
+/* line 36, style.scss */
+#editor.no-transition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+/* line 43, style.scss */
+#editor.initial {
+  -webkit-transform: scale(0.175) !important;
+  -moz-transform: scale(0.175) !important;
+  -ms-transform: scale(0.175) !important;
+  -o-transform: scale(0.175) !important;
+  transform: scale(0.175) !important;
+}
+
+/* line 51, style.scss */
+body {
+  margin: 0;
+  background-attachment: fixed !important;
+  position: fixed;
+  width: 100%;
+}
+
+/* line 59, style.scss */
+html, body, .container {
+  height: 100%;
+}
+
+/* line 63, style.scss */
+.toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }
