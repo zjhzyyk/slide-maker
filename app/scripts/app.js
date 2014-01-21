@@ -4,44 +4,54 @@ $(function(){
 		"<p>slide content</p>"+
 		"<i class='fa fa-times-circle delete-slide-icon'></i>"+
 		"</div>";
-	YUI().use('editor-inline', function(Y){
-		var content = "";
-		var empty = "<h1>title</h1>"+
-			"<p>some text</p>"+
-			blankSlide+
-			"<p>text</p>";
-		if (localStorage.getItem("content"))
-			content = localStorage.getItem("content");
-		else {
-			content = empty;
+	var empty = "<h1>title</h1>"+
+		"<p>some text</p>"+
+		blankSlide+
+		"<p>text</p>";
+	tinymce.init({
+		selector: "#editor",
+		inline: true,
+		plugins: [
+			"advlist autolink lists link image charmap print preview anchor",
+			"searchreplace visualblocks code fullscreen",
+			"insertdatetime media table contextmenu paste"
+		],
+		toolbar: false,
+		menubar:false, 
+		statusbar: false,
+		setup: function (ed) {
+			ed.on('init', function(args) {
+				ed.setContent(localStorage.getItem("content") || empty);
+				impressplus.init();
+			});
+			ed.on('ExecCommand', function (e) {
+				// ed.save();
+				localStorage.setItem("content", document.getElementById("editor").innerHTML);
+			});
+			ed.on('KeyUp', function (e) {
+				// ed.save();
+				localStorage.setItem("content", document.getElementById("editor").innerHTML);
+			});
 		}
-		var editor = new Y.InlineEditor({
-			content: content
-		});
-		editor.render('#editor');
-		editor.on('nodeChange', function() {
-		    localStorage.setItem("content", document.getElementById("editor").innerHTML);
-		});
-		$("#bold").click(function(){
-			editor.execCommand('bold');
-		});
-		$("#italic").click(function(){
-			editor.execCommand('italic');
-		});
-		$("#underline").click(function(){
-			editor.execCommand('underline');
-		});
-		$("#h1").click(function(){
-			editor.execCommand('addclass', 'h1');
-		});
-		$("#p").click(function(){
-			editor.execCommand('removeclass', 'h1');
-		});
-		$("#clear").click(function(){
-			localStorage.setItem("content", empty);
-			document.getElementById("editor").innerHTML = empty;
-		});
-		impressplus.init();
+	});
+	$("#bold").click(function(){
+		tinymce.activeEditor.execCommand('bold');
+	});
+	$("#italic").click(function(){
+		tinymce.activeEditor.execCommand('italic');
+	});
+	$("#underline").click(function(){
+		tinymce.activeEditor.execCommand('underline');
+	});
+	$("#h1").click(function(){
+		tinymce.activeEditor.execCommand("formatBlock", false, "h1");
+	});
+	$("#p").click(function(){
+		tinymce.activeEditor.execCommand("formatBlock", false, "p");
+	});
+	$("#clear").click(function(){
+		localStorage.setItem("content", empty);
+		document.getElementById("editor").innerHTML = empty;
 	});
 	$("#insert-slide").click(function(e){
 		var sel = getSelection();
@@ -62,7 +72,6 @@ $(function(){
 	$("#editor").on("click", ".delete-slide-icon", function(){
 		$(this).parent().remove();
 	});
-	
 	$("#present").click(function(){
 		var present = window.open("presentation.html");
 		present.onload = function(){
