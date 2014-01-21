@@ -350,3 +350,15 @@ html, body, .container {
   top: 0;
   z-index: 1000;
 }
+
+/* line 69, style.scss */
+#sidebar {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+/* line 75, style.scss */
+.wrapper #sidebar {
+  display: none;
+}

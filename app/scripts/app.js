@@ -5,15 +5,41 @@ $(function(){
 		"<i class='fa fa-times-circle delete-slide-icon'></i>"+
 		"</div>";
 	YUI().use('editor-inline', function(Y){
-		var editor = new Y.InlineEditor({
-			content: "<h1>title</h1>"+
+		var content = "";
+		var empty = "<h1>title</h1>"+
 			"<p>some text</p>"+
 			blankSlide+
-			"<p>text</p>"
+			"<p>text</p>";
+		if (localStorage.getItem("content"))
+			content = localStorage.getItem("content");
+		else {
+			content = empty;
+		}
+		var editor = new Y.InlineEditor({
+			content: content
 		});
 		editor.render('#editor');
+		editor.on('nodeChange', function() {
+		    localStorage.setItem("content", document.getElementById("editor").innerHTML);
+		});
 		$("#bold").click(function(){
 			editor.execCommand('bold');
+		});
+		$("#italic").click(function(){
+			editor.execCommand('italic');
+		});
+		$("#underline").click(function(){
+			editor.execCommand('underline');
+		});
+		$("#h1").click(function(){
+			editor.execCommand('addclass', 'h1');
+		});
+		$("#p").click(function(){
+			editor.execCommand('removeclass', 'h1');
+		});
+		$("#clear").click(function(){
+			localStorage.setItem("content", empty);
+			document.getElementById("editor").innerHTML = empty;
 		});
 		impressplus.init();
 	});
@@ -28,6 +54,7 @@ $(function(){
 		while (node.nextSibling && node.nextSibling.classList.contains("slide"))
 			node = node.nextSibling;
 		$(node).after(blankSlide);
+		localStorage.setItem("content", document.getElementById("editor").innerHTML);
 	});
 	$("#reset").click(function(){
 		impressplus.reset();

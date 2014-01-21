@@ -8,6 +8,7 @@ window.impressplus = (function(document, window, undefined){
   var inSetting = false;
   var ptx = 0, pty = 0;
   var eps = 1e-2;
+  var cur = -1;
   function zoomToRec(x,y,w,h) {
     if (inZooming) {
       console.log("exit because other zooming is taking place.")
@@ -54,9 +55,8 @@ window.impressplus = (function(document, window, undefined){
   function moveto(i){
     if (i<0 || i>=slidesNum) return;
     console.log("in moveto "+i);
-    var position = slides[i].offset();
-    // zoomToRec(position.left, position.top, parseFloat(slides[i].css("width")), parseFloat(slides[i].css("height")));
-    //TODO: use getBoundingClientRect instead.
+    var rec = slides[i].getBoundingClientRect();
+    zoomToRec(rec.left, rec.top, rec.width, rec.height);
   }
   function setTransform(transform){
     console.log("set transform", transform);
@@ -79,7 +79,9 @@ window.impressplus = (function(document, window, undefined){
     canvas.scale = 140/800;
   }
   function resetInPresent() {
-    $(present).removeClass("initial").width("auto");
+    cur = -1;
+    $(".delete-slide-icon").remove();
+    $(present).removeClass("initial");
     var wr = 0.85;
     var hr = 0.85;
     var w = present.getBoundingClientRect().width;
@@ -98,6 +100,16 @@ window.impressplus = (function(document, window, undefined){
     ty /= canvas.scale;
     var transform = "scale("+canvas.scale+") translate("+tx.toFixed(10)+"px,"+ty.toFixed(10)+"px)";
     setTransform(transform);
+    ptx = tx;
+    pty = ty;
+  }
+  function next(){
+    if (cur+1 >=0 && cur+1 < slidesNum)
+      moveto(++cur);
+  }
+  function previous(){
+    if (cur-1 >=0 && cur-1 < slidesNum)
+      moveto(--cur);
   }
   return {
     init: function(opt){
@@ -119,15 +131,15 @@ window.impressplus = (function(document, window, undefined){
         x: present.getBoundingClientRect().left,
         y: present.getBoundingClientRect().top
       };
-      console.log(canvas.width);
-      console.log(canvas.height);
-      $(".slide").each(function(item){
-        slides.push(item);
-      });
-      slidesNum = slides.length;
+      var slidesElements = document.getElementsByClassName("slide");
+      slidesNum = slidesElements.length;
+      slides = [];
+      for (var it = 0; it < slidesNum; it++) {
+        slides.push(slidesElements[it]);
+      }
       $("body").on("click", ".slide", function(){
-        console.log("get clicked");
-        // var position = $(this).offset();
+        cur = slides.indexOf(this);
+        console.log("click on",cur);
         var left = this.getBoundingClientRect().left;
         var top  = this.getBoundingClientRect().top;
         var width = this.getBoundingClientRect().width;
@@ -141,6 +153,15 @@ window.impressplus = (function(document, window, undefined){
         var translate = impressplus.getTranslate();
         console.log(translate);
         impressplus.setTranslate(translate.left, translate.top+distance);
+      });
+      $("#next").click(function () {
+        next();
+      });
+      $("#previous").click(function(){
+        previous();
+      });
+      $("#gohome").click(function(){
+        resetInPresent();
       });
     },
     go: moveto,
@@ -165,6 +186,8 @@ window.impressplus = (function(document, window, undefined){
       setTransform(transform);
       // addTransition();
       inSetting = false;
-    }
+    },
+    next: next,
+    previous: previous
   };
 })(document, window);
