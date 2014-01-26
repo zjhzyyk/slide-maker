@@ -21,7 +21,7 @@ $(function(){
 		statusbar: false,
 		setup: function (ed) {
 			ed.on('init', function(args) {
-				ed.setContent(localStorage.getItem("content") || empty);
+				document.getElementById("editor").innerHTML = (localStorage.getItem("content") || empty);
 				impressplus.init();
 			});
 			ed.on('ExecCommand', function (e) {

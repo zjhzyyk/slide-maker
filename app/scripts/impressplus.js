@@ -77,6 +77,7 @@ window.impressplus = (function(document, window, undefined){
     // addTransition();
     $(present).addClass("initial").removeClass("zoomed");
     canvas.scale = 140/800;
+    body.removeClass("zoomed");
   }
   function resetInPresent() {
     cur = -1;
