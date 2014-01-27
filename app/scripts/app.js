@@ -75,10 +75,13 @@ $(function(){
 	$("#present").click(function(){
 		var present = window.open("presentation.html");
 		present.onload = function(){
-			(present.document.getElementsByTagName("body")[0]).innerHTML = $('.wrapper')[0].innerHTML + 
-			"<script type='text/javascript'>impressplus.init();</script>" + 
+			var node = $('.wrapper').clone();
+			node.children("#editor").addClass("initial");
+			node.children("#editor")[0].setAttribute("contentEditable", false);
+			(present.document.getElementsByTagName("body")[0]).innerHTML = node[0].innerHTML + 
+			"<script type='text/javascript'>impressplus.init('present');</script>" + 
 			"<script type='text/javascript'>impressplus.resetInPresent();</script>";
-			present.impressplus.init();
+			present.impressplus.init("present");
 			present.impressplus.resetInPresent();
 		};
 	});

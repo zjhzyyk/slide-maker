@@ -150,9 +150,7 @@ window.impressplus = (function(document, window, undefined){
       $("body").mousewheel(function(event){
         $("#editor").removeClass("initial");
         var distance = event.deltaY * event.deltaFactor;
-        console.log(distance);
         var translate = impressplus.getTranslate();
-        console.log(translate);
         impressplus.setTranslate(translate.left, translate.top+distance);
       });
       $("#next").click(function () {
@@ -164,6 +162,15 @@ window.impressplus = (function(document, window, undefined){
       $("#gohome").click(function(){
         resetInPresent();
       });
+      if (opt==="present")
+        document.onkeydown = function(e) {
+          if (e.keyCode == 39 ||
+              e.keyCode == 13) {
+            next();
+          } else if (e.keyCode == 37) {
+            previous();
+          }
+        };
     },
     go: moveto,
     reset: reset,
