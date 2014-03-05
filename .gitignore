@@ -1,3 +1,6 @@
 node_modules
 app/bower_components
 .sass-cache
+app/styles/style.css
+app/scripts/main.js
+app/scripts/templates.js

@@ -1,10 +1,10 @@
 @import "variables";
 @import "compass/css3";
-@import "compass/utilities/general/clearfix";
+// @import "compass/utilities/general/clearfix";
 @import "typography";
 @import "background";
 @import "slide";
-@import "button";
+// @import "button";
 // @import "scrollbar";
 // @import "mixins";
 
@@ -50,7 +50,7 @@
 
 body {
 	margin: 0;
-	// padding-top: 50px;
+	padding-top: 100px;
 	background-attachment: fixed !important;
 	position: fixed;
 	width: 100%;

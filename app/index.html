@@ -1,37 +1,31 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>slide maker</title>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/style.css">
+  <meta charset="utf-8">
+  <title>slide maker</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="theme-color-silver-blue">
-	<div class="btn-group toolbar">
-		<button type="button" class="btn btn-default" id="bold"><i class="fa fa-bold"></i></button>
-		<button type="button" class="btn btn-default" id="italic"><i class="fa fa-italic"></i></button>
-		<button type="button" class="btn btn-default" id="underline"><i class="fa fa-underline"></i></button>
-		<button type="button" class="btn btn-default" id="insert-slide"><i class="fa fa-plus"></i></button>
-		<button type="button" class="btn btn-default" id="present"><i class="fa fa-play"></i></button>
-		<button type="button" class="btn btn-default" id="reset"><i class="fa fa-home"></i></button>
-		<button type="button" class="btn btn-default" id="clear"><i class="fa fa-trash-o"></i></button>
-		<button type="button" class="btn btn-default" id="h1">H1</button>
-		<button type="button" class="btn btn-default" id="p">P</button>
-	</div>
-	<div class="wrapper">
-		<div class="text initial" id="editor">
-		</div>
-		<div id="sidebar" class="btn-group">
-			<button class="btn btn-default" id="gohome"><i class="fa fa-home"></i></button>
-			<button class="btn btn-default" id="previous"><i class="fa fa-arrow-circle-left"></i></button>
-			<button class="btn btn-default" id="next"><i class="fa fa-arrow-circle-right"></i></button>			
-		</div>
-	</div>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-	<script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
-	<script src="scripts/impressplus.js"></script>
-	<script src="scripts/app.js"></script>
+
+  <div class="wrapper">
+    <div class="text initial" id="editor">
+    </div>
+    <div id="sidebar" class="btn-group">
+      <button class="btn btn-default" id="gohome"><i class="fa fa-home"></i></button>
+      <button class="btn btn-default" id="previous"><i class="fa fa-arrow-circle-left"></i></button>
+      <button class="btn btn-default" id="next"><i class="fa fa-arrow-circle-right"></i></button>     
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+  <script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+  <script src="scripts/impressplus.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
