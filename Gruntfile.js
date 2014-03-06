@@ -50,14 +50,14 @@ module.exports = function(grunt) {
       },
       jst: {
         files: ['app/templates/**/*.html'],
-        tasks: ['emberTemplates']
+        tasks: ['jst']
       },
       compass: {
         files: ['app/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:dev'],
       },
       neuter: {
-        files: ['app/scripts/{,*/}*.js'],
+        files: ['app/scripts/{,*/}*.js', '!app/scripts/{main,templates}.js'],
         tasks: ['neuter']
       },
       livereload: {
@@ -66,8 +66,8 @@ module.exports = function(grunt) {
         },
         files: [
           'app/{,*/}*.html',
-          // 'app/styles/{,*/}*.css',
-          // 'app/scripts/{,*/}*.js',
+          'app/styles/{,*/}*.css',
+          'app/scripts/main.js',
           'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
           // 'app/templates/{,*/}*.html'
         ]
@@ -77,9 +77,6 @@ module.exports = function(grunt) {
       application: {
         src: 'app/scripts/app.js',
         dest: 'app/scripts/main.js',
-        options: {
-          skipFiles: ['app/scripts/main.js']
-        }
       }
     },
     jst: {

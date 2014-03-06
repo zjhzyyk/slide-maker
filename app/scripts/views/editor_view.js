@@ -1,4 +1,7 @@
 App.EditorView = App.View.extend({
+	events: {
+		
+	}
 	id: "editor",
 	blankSlide: "<div class='slide'>"+
 				"<h1>slide title</h1>"+
@@ -9,12 +12,12 @@ App.EditorView = App.View.extend({
 			"<p>some text</p>"+
 			this.blankSlide+
 			"<p>text</p>",
-	render: function(){
-		App.View.prototype.render.call(this);
+	afterCreate: function(){
 		this.tinymceInit();
-		var toolbar = new App.ToolbarView();
-		$('body').append(toolbar.el);
-		this.el.on("click", ".delete-slide-icon", function(){
+	},
+	delegateEvents: function(){
+		App.View.prototype.delegateEvents.call(this);
+		this.$el.on("click", ".delete-slide-icon", function(){
 			$(this).parent().remove();
 		});
 	},
@@ -33,16 +36,16 @@ App.EditorView = App.View.extend({
 			statusbar: false,
 			setup: function (ed) {
 				ed.on('init', function(args) {
-					self.el.html(localStorage.getItem("content") || self.empty);
+					self.$el.html(localStorage.getItem("content") || self.empty);
 					impressplus.init();
 				});
 				ed.on('ExecCommand', function (e) {
 					// ed.save();
-					localStorage.setItem("content", self.el.html());
+					localStorage.setItem("content", self.$el.html());
 				});
 				ed.on('KeyUp', function (e) {
 					// ed.save();
-					localStorage.setItem("content", self.el.html());
+					localStorage.setItem("content", self.$el.html());
 				});
 			}
 		});
@@ -74,5 +77,37 @@ App.EditorView = App.View.extend({
 		if ($("#editor *:last-child").prop("tagName").toLowerCase()=="p")
 			$("#editor").append("<p>&nbsp;</p>");
 		localStorage.setItem("content", document.getElementById("editor").innerHTML);
+	},
+	registerToolbar: function(){
+		var self = this;
+		$("#bold").click(function(){
+			tinymce.activeEditor.execCommand('bold');
+		});
+		$("#italic").click(function(){
+			tinymce.activeEditor.execCommand('italic');
+		});
+		$("#underline").click(function(){
+			tinymce.activeEditor.execCommand('underline');
+		});
+		$("#h1").click(function(){
+			tinymce.activeEditor.execCommand("formatBlock", false, "h1");
+		});
+		$("#p").click(function(){
+			tinymce.activeEditor.execCommand("formatBlock", false, "p");
+		});
+		$("#insert-image").click(function(){
+			var insertImageModal = App.InsertImageView.getInstance();
+			$('body').append(insertImageModal.$el);
+			insertImageModal.$el.modal("show");
+		});
+		$("#clear").click(function(){
+			localStorage.setItem("content", empty);
+			self.$el.html(empty);
+		});
+		$("#insert-slide").click(self.insertSlide);
+		$("#reset").click(function(){
+			impressplus.reset();
+		});
+		$("#present").click(self.present);
 	}
 });
